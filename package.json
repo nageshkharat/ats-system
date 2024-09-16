@@ -17,3 +17,8 @@
   },
   "description": ""
 }
+"scripts": {
+  "build": "your-build-command",
+  "start": "node server/server.js"
+}
+
