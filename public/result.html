@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Score Result</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>ATS Score Result</h1>
+    </header>
+    <main>
+        <h2>Your ATS Score</h2>
+        <p><strong>Role Applied For:</strong> <span id="role"></span></p>
+        <p><strong>ATS Score:</strong> <span id="ats-score"></span>%</p>
+        <a href="index.html">Go Back</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 ATS Scanner. All rights reserved.</p>
+    </footer>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const score = urlParams.get('score');
+        const role = urlParams.get('role');
+
+        document.getElementById('ats-score').textContent = score;
+        document.getElementById('role').textContent = role;
+    </script>
+</body>
+</html>
