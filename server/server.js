@@ -4,14 +4,21 @@ const pdfParse = require('pdf-parse');
 const bodyParser = require('body-parser');
 const path = require('path');
 const atsScoring = require('./utils/atsScoring');
+const fs = require('fs');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+// Ensure uploads directory exists
+const uploadDir = '/tmp/uploads'; // Use /tmp for Vercel deployment
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../uploads'));
+    cb(null, uploadDir); // Use Vercel tmp directory
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -40,7 +47,7 @@ app.post('/api/resume', upload.single('resume'), async (req, res) => {
       return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    const resumePath = path.join(__dirname, '../uploads', req.file.filename);
+    const resumePath = path.join(uploadDir, req.file.filename);
     const resumeData = await pdfParse(resumePath);
 
     const jobDescription = req.body.jobDescription || "";
@@ -56,5 +63,5 @@ app.post('/api/resume', upload.single('resume'), async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 });
