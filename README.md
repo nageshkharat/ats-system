@@ -55,5 +55,5 @@
 
    - Frontend: HTML, CSS, JavaScript
    - Backend: Node.js, Express.js
-   - File Upload Handling Multer
+   - File Upload Handling: Multer
    - PDF Parsing: pdf-parse
