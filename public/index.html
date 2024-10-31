@@ -44,5 +44,17 @@
         <p>&copy; 2024 ATS Scanner. All rights reserved.</p>
     </footer>
     <script src="js/script.js"></script>
+    <script>
+        fetch('/api/resume', {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.json())
+.then(data => {
+    window.location.href = `result.html?score=${data.score}&role=${data.role}`;
+})
+.catch(error => console.error('Error:', error));
+
+    </script>
 </body>
 </html>
