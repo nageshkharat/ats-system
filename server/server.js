@@ -7,7 +7,7 @@ const atsScoring = require('./utils/atsScoring');
 const fs = require('fs'); 
   
 const app = express(); 
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 3000;  
    
 // Ensure uploads directory exists
 const uploadDir = '/tmp/uploads'; // Use /tmp for Vercel deployment
