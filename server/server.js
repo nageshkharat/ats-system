@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');  
-const pdfParse = require('pdf-parse');       
+const pdfParse = require('pdf-parse');        
 const bodyParser = require('body-parser');            
 const path = require('path');      
 const atsScoring = require('./utils/atsScoring');   
