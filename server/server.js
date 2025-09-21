@@ -4,7 +4,7 @@ const pdfParse = require('pdf-parse');
 const bodyParser = require('body-parser');             
 const path = require('path');        
 const atsScoring = require('./utils/atsScoring');      
-const fs = require('fs');      
+const fs = require('fs');       
       
 const app = express();   
 const port = process.env.PORT || 3000;  
